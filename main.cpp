@@ -20,7 +20,7 @@ void MostrarMenu();
 void MostrarSubMenuInventarios();
 void CargarDatos();
 void GuardarDatos();
-void LimpiarCin();
+void PurgarCin();
 int CantidadDeDatosActuales();
 bool FloatValido(float& numero);
 bool EnteroValido(int& numero);
@@ -51,7 +51,7 @@ void ImprimeEncabezadoPedidos(const int medidaDeColumnas[]);
 
 //Matrices
 string matrizDeInventario[100][8];
-string matrizDePedidos[100][6];
+string matrizDePedidos[99][6];
 int cantidadDeInventarioActual = 0;
 int cantidadDePedidosActual = 0;
 const int medidaDeColumnasInventarios[] = {17, 17, 16, 20, 22, 23, 18};
@@ -178,7 +178,7 @@ void IngresarPiezaAlInventario()
     float costoDeLaPiezaPorUnidad;
     int cantidadDePiezas;
 
-    LimpiarCin();
+    PurgarCin();
 
     do
     {
@@ -243,7 +243,7 @@ void ConsultarPiezaDelInventario()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pieza: ";
         string codigoDePieza;
         cin>>codigoDePieza;
@@ -283,7 +283,7 @@ void ModificarPiezaDelInventario()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pieza: ";
         string codigoDePieza;
         float nuevoCosto;
@@ -340,7 +340,7 @@ void EliminarPiezaDelInventario()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pieza: ";
         string codigoDePieza;
         cin>>codigoDePieza;
@@ -482,7 +482,7 @@ void IngresoDePedido()
     int cantidadDePiezasASolicitar;
 
 
-    LimpiarCin();
+    PurgarCin();
 
     do
     {
@@ -529,7 +529,7 @@ void ConsultaDePedido()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pedido: ";
         string codigoDePedido;
         cin>>codigoDePedido;
@@ -567,7 +567,7 @@ void CancelarPedido()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pedido: ";
         string codigoDePedido;
         cin>>codigoDePedido;
@@ -606,7 +606,7 @@ void RegistrarEntregaDePedido()
 {
     do
     {
-        LimpiarCin();
+        PurgarCin();
         cout<<"Digite código de pedido: ";
         string codigoDePedido;
         cin>>codigoDePedido;
@@ -695,7 +695,7 @@ string GenerarConsecutivo(string codigoInicial, int consecutivo)
 
 bool FloatValido(float& numero)
 {
-    LimpiarCin();
+    PurgarCin();
     cin>>numero;
     if (cin.fail())
     {
@@ -708,13 +708,13 @@ bool FloatValido(float& numero)
 }
 bool EnteroValido(int& numero)
 {
-    LimpiarCin();
+    PurgarCin();
     cin>>numero;
     if (cin.fail())
     {
         ImprimeMensajeDeError("Numero invalido. Intente nuevamente");
         system("pause");
-        LimpiarCin();
+        PurgarCin();
         return false;
     }
 
@@ -723,7 +723,7 @@ bool EnteroValido(int& numero)
 
 bool StringEnBlancoOVacio(string& dato)
 {
-    LimpiarCin();
+    PurgarCin();
     getline(cin, dato);
     regex enBlancoOVacio("^\\s*$");
     bool resultado = regex_match(dato, enBlancoOVacio);
@@ -739,7 +739,7 @@ bool StringEnBlancoOVacio(string& dato)
 
 bool CedulaValida(string& cedula)
 {
-    LimpiarCin();
+    PurgarCin();
     getline(cin, cedula);
     regex cedulaValida("^\\d{9}$");
     bool resultado = regex_match(cedula, cedulaValida);
@@ -757,7 +757,7 @@ bool ValidaRespuestaSiONo(const string& mensaje)
 {
     while(true)
     {
-        LimpiarCin();
+        PurgarCin();
         system("cls");
         char respuesta;
         cout<<mensaje;
@@ -871,7 +871,7 @@ void GuardarDatos()
 
 bool FechaValida(string& fechaDeSolicitud)
 {
-    LimpiarCin();
+    PurgarCin();
     getline(cin, fechaDeSolicitud);
     regex fechaValida(R"(^([0-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/(\d{4})$)");
     bool resultado = regex_match(fechaDeSolicitud, fechaValida);
@@ -886,7 +886,7 @@ bool FechaValida(string& fechaDeSolicitud)
     return resultado;
 }
 
-void LimpiarCin()
+void PurgarCin()
 {
     cin.clear();
     fflush(stdin);
